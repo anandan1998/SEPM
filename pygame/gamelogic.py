@@ -79,12 +79,14 @@ class GameLogic:
             piece.selected = False
             dest_cell.append(piece)
             self.piece_stacks[self.selected_cell].remove(piece)
-
+            
+        self.p_current = 1 if self.p_current == 2 else 2
         self.selected_cell = None
 
     def check_for_winner(self):
-        top_matrix = []
 
+        #Matrix representation of the board, where each cell contains the top piece of each stack (which plauyer controls it)
+        top_matrix = []
         for row in range(self.grid_size):
             rows = []
             for col in range(self.grid_size):
@@ -96,7 +98,10 @@ class GameLogic:
                     rows.append(0)
             top_matrix.append(rows)
         
-        print(top_matrix)
+        print("------------")
+        for row in top_matrix:
+            print(" ".join(f"{val:>2}" for val in row))
+        
 
         if self.dfs_walk(top_matrix, 1):
             return 1
@@ -155,7 +160,6 @@ class GameLogic:
                     return True
 
         return False
-
 
 
     def reset_error(self):
