@@ -30,7 +30,7 @@ class GameLogic:
 
 
     def add_piece(self,cell_key,is_capstone):
-        self.selected_cell = None
+        self.reset_move_operation()
         if cell_key not in self.piece_stacks:
             self.piece_stacks[cell_key] = []
         
@@ -66,12 +66,28 @@ class GameLogic:
             for piece in current_cell[-self.pieces_to_move:]:
                 piece.set_selected(True)
     
+    def reset_move_operation(self):
+        if self.selected_cell != None:
+            for piece in self.piece_stacks[self.selected_cell]:
+                piece.selected = False
+        self.selected_cell = None
+
+
 
     def move_pieces(self,cell_dest):
         pieces_to_move = [piece for piece in self.piece_stacks[self.selected_cell] if piece.selected]
 
+        if len(pieces_to_move )+ len(self.piece_stacks[cell_dest]) > 5:
+            self.error_msg = "Invalid move, too many pieces"
+            self.msg_timer = time.time()
+            self.reset_move_operation()
+            return
+            
+
         if cell_dest not in self.piece_stacks:
             self.piece_stacks[cell_dest] = []
+
+    
 
         dest_cell = self.piece_stacks[cell_dest]
 
@@ -79,7 +95,7 @@ class GameLogic:
             piece.selected = False
             dest_cell.append(piece)
             self.piece_stacks[self.selected_cell].remove(piece)
-            
+
         self.p_current = 1 if self.p_current == 2 else 2
         self.selected_cell = None
 
