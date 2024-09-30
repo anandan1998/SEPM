@@ -44,9 +44,9 @@ class MouseListener:
                 
             cell_key = (cell_x, cell_y)
 
-            if event.button == 3:  
+            if event.button == 1:  
                 game_logic.add_piece(cell_key,is_capstone=False)
-            elif event.button == 1:
+            elif event.button == 3:
                 game_logic.add_piece(cell_key,is_capstone=True)
             add_piece_sound.play()
             self.last_space = False
