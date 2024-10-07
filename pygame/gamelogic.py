@@ -35,12 +35,18 @@ class GameLogic:
         if cell_key not in self.piece_stacks:
             self.piece_stacks[cell_key] = []
 
+        if len(self.piece_stacks[cell_key]) > 0 and self.piece_stacks[cell_key][-1].is_capstone:
+            self.error_msg = "Invalid move, capstone on top!"
+            self.msg_timer = time.time()
+            return
+
         if len(self.piece_stacks[cell_key]) < 5:
             if self.p_current == 1:
                 self.p1_pieces -= 1
             else:
                 self.p2_pieces -= 1
 
+            
             self.piece_stacks[cell_key].append(Piece(self.p_current, is_capstone=is_capstone))
             self.p_current = 1 if self.p_current == 2 else 2
 
