@@ -21,5 +21,6 @@ This project is a 1v1 board game called "UU Game," designed to be played between
 2. The player can then press num keys 1 through 4 to select the amount of pieces to be moved
 3. To actually move the pieces once they are selected, the player needs to hover the mouse over the destination square and press space again
 
+### Installation
 To run the game, ensure pygame is installed on your system, then execute python3.x (where x is your version of python3) engine.py.
 If pygame isn't installed, you can install it using pip. 
