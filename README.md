@@ -1,6 +1,6 @@
 # UU Game
 
-This project is a 1v1 board game called "UU Game," designed to be played between a human player and an AI opponent. The AI operates on a minimax algorithm with alpha-beta pruning for efficient decision-making. The game objective is to create an uninterrupted path from one side of the game board to the opposite side, with only orthogonally connected (not diagonal) pieces counting toward this path.
+This project is a 1v1 board game called "UU Game," designed to be played between a human player and an AI opponent. The AI operates on a minimax algorithm with alpha-beta pruning for efficient decision-making. The game objective is to create an uninterrupted path from one side of the game board to the opposite side, with only orthogonally connected (not diagonal) pieces counting toward this path. Our version pre integration is located in the pygame directory, the integrated version is located in the game-dev-ai directory. Note, instructions to play the game version integrated with the other group is available once you start the game.
 
 ---
 
@@ -22,5 +22,7 @@ This project is a 1v1 board game called "UU Game," designed to be played between
 3. To actually move the pieces once they are selected, the player needs to hover the mouse over the destination square and press space again
 
 ### Installation
-To run the game, ensure pygame is installed on your system, then execute python3.x (where x is your version of python3) engine.py.
+To run the pre integration version, ensure pygame is installed on your system, then execute python3.x (where x is your version of python3) engine.py.
 If pygame isn't installed, you can install it using pip. 
+
+To run the integrated version of the game, execute python3.x (where x is your version of python3) main.py
